@@ -1,0 +1,8 @@
+* {
+  font-family: Tahoma, sans-serif;
+}
+
+.button input {
+  background-color: lightblue;
+  border-radius: 5px;
+}
