@@ -7,26 +7,33 @@
     <link rel="stylesheet" href="{% static 'login_reg/css/styles.css' %}" meta charset="utf-8" />
   </head>
   <body>
+    {% if messages %}
+      {% for message in messages %}
+      <p>{{ message }}<p><br />
+      {% endfor %}
+    {% endif %}
     <h2>Registration:</h2>
-      <form action="/register" methods="post">
+      <form action="{% url '_register' %}" method="post">
+        {% csrf_token %}
         <label>First Name: </label><br />
         <input type="text" name="first_name"/><br />
         <label>Last Name: </label><br />
-        <input type="text" name="first_name"/><br />
+        <input type="text" name="last_name"/><br />
         <label>Email: </label><br />
-        <input type="text" name="first_name"/><br />
+        <input type="text" name="email"/><br />
         <label>Password: </label><br />
         <input type="text" name="password"/><br />
         <label>Confirm Password: </label><br />
-        <input type="text" name="password"/><br />
+        <input type="text" name="password_conf"/><br />
       <div class="button">
         <input type="submit" name="Register" value="Register" /><br />
       </div>
       </form>
       <h2>Login:</h2>
-        <form action="/login" methods="post">
+        <form action="{% url '_login' %}" method="post">
+          {% csrf_token %}
           <label>Email: </label><br />
-          <input type="text" name="first_name"/><br />
+          <input type="text" name="email"/><br />
           <label>Password: </label><br />
           <input type="text" name="password"/><br />
         <div class="button">
